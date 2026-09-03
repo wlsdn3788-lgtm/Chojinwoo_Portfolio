@@ -1,53 +1,19 @@
 <title>조진우 포트폴리오</title>
 <style>
   :root {
-    --bg: #eef0f4;
+    --bg: #e4e6ea;
     --surface: #ffffff;
-    --surface-2: #f4f5f9;
-    --border: #dbdee6;
-    --text: #1b1e27;
-    --text-muted: #5b606e;
-    --accent: #d9531e;
-    --accent-soft: rgba(217, 83, 30, 0.11);
-    --accent-strong: #b8431a;
-    --accent-2: #2f8f6e;
-    --accent-2-soft: rgba(47, 143, 110, 0.12);
-    --rail: #cfd3dd;
-    --shadow: 0 1px 2px rgba(20, 22, 30, 0.04), 0 8px 24px rgba(20, 22, 30, 0.05);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #14161c;
-      --surface: #1b1e27;
-      --surface-2: #20232d;
-      --border: #2c303c;
-      --text: #edeef2;
-      --text-muted: #9499a8;
-      --accent: #ff8256;
-      --accent-soft: rgba(255, 130, 86, 0.16);
-      --accent-strong: #ffa07d;
-      --accent-2: #4fd9a5;
-      --accent-2-soft: rgba(79, 217, 165, 0.14);
-      --rail: #333844;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #14161c;
-    --surface: #1b1e27;
-    --surface-2: #20232d;
-    --border: #2c303c;
-    --text: #edeef2;
-    --text-muted: #9499a8;
-    --accent: #ff8256;
-    --accent-soft: rgba(255, 130, 86, 0.16);
-    --accent-strong: #ffa07d;
-    --accent-2: #4fd9a5;
-    --accent-2-soft: rgba(79, 217, 165, 0.14);
-    --rail: #33384d;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --surface-2: #eef0f3;
+    --border: #d7dae1;
+    --text: #1e2128;
+    --text-muted: #5b606c;
+    --accent: #1d4ed8;
+    --accent-soft: rgba(29, 78, 216, 0.09);
+    --accent-strong: #16399e;
+    --accent-2: #5b7bb8;
+    --accent-2-soft: rgba(91, 123, 184, 0.12);
+    --rail: #c7cbd4;
+    --shadow: 0 1px 2px rgba(20, 22, 30, 0.05), 0 8px 24px rgba(20, 22, 30, 0.06);
   }
 
   * { box-sizing: border-box; }
@@ -92,6 +58,7 @@
     letter-spacing: -0.01em;
     margin: 0 0 0.65rem;
     text-wrap: balance;
+    color: var(--accent-strong);
   }
 
   .tagline {
@@ -146,6 +113,7 @@
     margin: 0 0 1.4rem;
     padding-bottom: 0.9rem;
     border-bottom: 1px solid var(--border);
+    color: var(--accent-strong);
   }
 
   .section-tag {
@@ -186,6 +154,7 @@
     font-size: 1.08rem;
     font-weight: 700;
     margin: 0 0 0.2rem;
+    color: var(--accent-strong);
   }
 
   .row-body p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
@@ -265,6 +234,7 @@
     font-size: 1.22rem;
     font-weight: 700;
     margin: 0;
+    color: var(--accent-strong);
   }
 
   .project-meta {
@@ -317,6 +287,35 @@
     color: var(--accent);
     font-size: 0.78rem;
     top: 0.14rem;
+  }
+
+  .project-links {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .store-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.4rem 0.8rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .store-link:hover,
+  .store-link:focus-visible {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    outline: none;
   }
 
   /* ---------- footer ---------- */
@@ -374,7 +373,7 @@
         <div class="row-period">2020.03 – 현재</div>
         <div class="row-body">
           <h3>유한대학교</h3>
-          <p>공학부 게임콘텐츠전공</p>
+          <p>게임콘텐츠전공</p>
         </div>
         <span class="pill pill-live">재학중</span>
       </div>
@@ -500,6 +499,9 @@
           <ul class="achievements">
             <li>소형 스트리머와 협업 및 홍보, QA 진행 &amp; 스토브 인디 출시</li>
           </ul>
+          <div class="project-links">
+            <a class="store-link" href="https://store.onstove.com/ko/games/104725" target="_blank" rel="noopener noreferrer">스토어 페이지 ↗</a>
+          </div>
         </div>
       </article>
 
