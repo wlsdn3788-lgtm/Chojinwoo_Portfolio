@@ -1,0 +1,514 @@
+<title>조진우 포트폴리오</title>
+<style>
+  :root {
+    --bg: #eef0f4;
+    --surface: #ffffff;
+    --surface-2: #f4f5f9;
+    --border: #dbdee6;
+    --text: #1b1e27;
+    --text-muted: #5b606e;
+    --accent: #d9531e;
+    --accent-soft: rgba(217, 83, 30, 0.11);
+    --accent-strong: #b8431a;
+    --accent-2: #2f8f6e;
+    --accent-2-soft: rgba(47, 143, 110, 0.12);
+    --rail: #cfd3dd;
+    --shadow: 0 1px 2px rgba(20, 22, 30, 0.04), 0 8px 24px rgba(20, 22, 30, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14161c;
+      --surface: #1b1e27;
+      --surface-2: #20232d;
+      --border: #2c303c;
+      --text: #edeef2;
+      --text-muted: #9499a8;
+      --accent: #ff8256;
+      --accent-soft: rgba(255, 130, 86, 0.16);
+      --accent-strong: #ffa07d;
+      --accent-2: #4fd9a5;
+      --accent-2-soft: rgba(79, 217, 165, 0.14);
+      --rail: #333844;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #14161c;
+    --surface: #1b1e27;
+    --surface-2: #20232d;
+    --border: #2c303c;
+    --text: #edeef2;
+    --text-muted: #9499a8;
+    --accent: #ff8256;
+    --accent-soft: rgba(255, 130, 86, 0.16);
+    --accent-strong: #ffa07d;
+    --accent-2: #4fd9a5;
+    --accent-2-soft: rgba(79, 217, 165, 0.14);
+    --rail: #33384d;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Public Sans", -apple-system, "Malgun Gothic", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ---------- hero ---------- */
+  .hero { margin-bottom: 4rem; }
+
+  .hero .eyebrow { display: block; margin-bottom: 1rem; }
+
+  .hero h1 {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 6vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.65rem;
+    text-wrap: balance;
+  }
+
+  .tagline {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin: 0 0 1.6rem;
+  }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+  }
+
+  .contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .contact-item:hover,
+  .contact-item:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    outline: none;
+  }
+
+  /* ---------- sections ---------- */
+  .section { margin-bottom: 3.4rem; }
+  .section:last-of-type { margin-bottom: 2.5rem; }
+
+  .section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.005em;
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-tag {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 5px;
+    padding: 0.28rem 0.5rem;
+  }
+
+  /* ---------- education / career rows ---------- */
+  .row-list { display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .row-item {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .row-period {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.15rem;
+  }
+
+  .row-body h3 {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem;
+  }
+
+  .row-body p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+
+  .pill {
+    align-self: start;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .pill-live { color: var(--accent-strong); background: var(--accent-soft); }
+  .pill-done { color: var(--accent-2); background: var(--accent-2-soft); }
+
+  /* ---------- projects ---------- */
+  .project-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding-left: 1.6rem;
+  }
+
+  .project-list::before {
+    content: "";
+    position: absolute;
+    left: 0.28rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--rail);
+  }
+
+  .project { position: relative; }
+
+  .project::before {
+    content: "";
+    position: absolute;
+    left: -1.6rem;
+    top: 1.45rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--rail);
+  }
+
+  .project.is-live::before {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.4rem;
+    box-shadow: var(--shadow);
+  }
+
+  .project-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-top h3 {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-size: 1.22rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.85rem;
+  }
+
+  .meta-sep { color: var(--border); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .tag {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.25rem 0.55rem;
+  }
+
+  .achievements {
+    list-style: none;
+    margin: 0.95rem 0 0;
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .achievements li {
+    position: relative;
+    padding-left: 1.05rem;
+    font-size: 0.94rem;
+    color: var(--text);
+  }
+
+  .achievements li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.78rem;
+    top: 0.14rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  footer a { text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent); outline: none; }
+
+  @media (max-width: 600px) {
+    .page { padding: 3rem 1.15rem 4rem; }
+    .row-item {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+    .row-period { padding-top: 0; }
+    .pill { justify-self: start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="page">
+
+  <header class="hero">
+    <span class="eyebrow">DEV PROFILE · BUILD 2026.09</span>
+    <h1>조진우</h1>
+    <p class="tagline">AI를 활용할 줄 아는 개발자</p>
+    <div class="contact">
+      <a class="contact-item" href="mailto:wlsdn3788@naver.com">✉ wlsdn3788@naver.com</a>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="edu-title">
+    <h2 class="section-title" id="edu-title"><span class="section-tag">EDU</span>학력</h2>
+    <div class="row-list">
+      <div class="row-item">
+        <div class="row-period">2020.03 – 현재</div>
+        <div class="row-body">
+          <h3>유한대학교</h3>
+          <p>공학부 게임콘텐츠전공</p>
+        </div>
+        <span class="pill pill-live">재학중</span>
+      </div>
+      <div class="row-item">
+        <div class="row-period">2017.03 – 2020.02</div>
+        <div class="row-body">
+          <h3>인항고등학교</h3>
+        </div>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="work-title">
+    <h2 class="section-title" id="work-title"><span class="section-tag">WORK</span>경력</h2>
+    <div class="row-list">
+      <div class="row-item">
+        <div class="row-period">2024.05 – 2024.08</div>
+        <div class="row-body">
+          <h3>편의점</h3>
+          <p>알바생</p>
+        </div>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="proj-title">
+    <h2 class="section-title" id="proj-title"><span class="section-tag">PROJ</span>프로젝트 경험</h2>
+
+    <div class="project-list">
+
+      <article class="project is-live">
+        <div class="project-card">
+          <div class="project-top">
+            <h3>던전 청소부 슬라임군</h3>
+            <span class="pill pill-live">진행중</span>
+          </div>
+          <div class="project-meta">
+            <span>2026.09 – 현재</span><span class="meta-sep">·</span>
+            <span>기능 개발</span><span class="meta-sep">·</span>
+            <span>개발</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Unity</span>
+            <span class="tag">Claude</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project is-live">
+        <div class="project-card">
+          <div class="project-top">
+            <h3>UnderMine</h3>
+            <span class="pill pill-live">진행중</span>
+          </div>
+          <div class="project-meta">
+            <span>2026.09 – 현재</span><span class="meta-sep">·</span>
+            <span>기능 개발</span><span class="meta-sep">·</span>
+            <span>개발, 기획</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Unity</span>
+            <span class="tag">Claude</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-card">
+          <div class="project-top">
+            <h3>SpaceShooter</h3>
+            <span class="pill pill-done">완료</span>
+          </div>
+          <div class="project-meta">
+            <span>2025.09 – 2025.12</span><span class="meta-sep">·</span>
+            <span>기능 개발</span><span class="meta-sep">·</span>
+            <span>개발</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Unity</span>
+          </div>
+          <ul class="achievements">
+            <li>게임 개발 및 QA</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-card">
+          <div class="project-top">
+            <h3>벽돌깨기</h3>
+            <span class="pill pill-done">완료</span>
+          </div>
+          <div class="project-meta">
+            <span>2023.03 – 2023.08</span><span class="meta-sep">·</span>
+            <span>기능 개발</span><span class="meta-sep">·</span>
+            <span>개발</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Unity</span>
+          </div>
+          <ul class="achievements">
+            <li>2스테이지 개발</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-card">
+          <div class="project-top">
+            <h3>Voice</h3>
+            <span class="pill pill-done">완료</span>
+          </div>
+          <div class="project-meta">
+            <span>2026.03 – 2026.06</span><span class="meta-sep">·</span>
+            <span>기획 / 문서</span><span class="meta-sep">·</span>
+            <span>기획, 홍보</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Notion</span>
+          </div>
+          <ul class="achievements">
+            <li>소형 스트리머와 협업 및 홍보, QA 진행 &amp; 스토브 인디 출시</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>COMPILED · 2026-09-03</span>
+    <a href="mailto:wlsdn3788@naver.com">wlsdn3788@naver.com</a>
+  </footer>
+
+</div>
