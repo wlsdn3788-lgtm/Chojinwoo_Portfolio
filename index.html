@@ -18,6 +18,8 @@
 
   * { box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -42,6 +44,36 @@
     text-transform: uppercase;
     color: var(--accent);
     font-weight: 600;
+  }
+
+  /* ---------- top tabs ---------- */
+  .top-tabs {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+  }
+
+  .top-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent);
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.55rem 1.05rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .top-tab:hover,
+  .top-tab:focus-visible {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    outline: none;
   }
 
   /* ---------- hero ---------- */
@@ -318,6 +350,138 @@
     outline: none;
   }
 
+  /* ---------- event plan doc ---------- */
+  #event-plan { scroll-margin-top: 2rem; }
+
+  .doc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 2.2rem;
+    box-shadow: var(--shadow);
+    max-height: 720px;
+    overflow-y: auto;
+  }
+
+  .doc-head {
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .doc-title {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0 0 0.3rem;
+    color: var(--accent-strong);
+  }
+
+  .doc-subtitle {
+    margin: 0 0 0.5rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .doc-meta {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .doc h4 {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--accent-strong);
+    margin: 2.2rem 0 0.9rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .doc h4:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+
+  .doc h5 {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: var(--accent);
+    margin: 1.4rem 0 0.6rem;
+  }
+
+  .doc p {
+    margin: 0 0 0.9rem;
+    color: var(--text);
+    font-size: 0.96rem;
+  }
+
+  .doc p strong { color: var(--accent-strong); }
+
+  .doc ul,
+  .doc ol {
+    margin: 0 0 1rem;
+    padding-left: 1.3rem;
+  }
+
+  .doc li {
+    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  .doc-callout {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1.1rem;
+    border-radius: 6px;
+    margin: 1rem 0 1.4rem;
+  }
+
+  .doc table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.6rem 0 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  .doc th,
+  .doc td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .doc th {
+    background: var(--surface-2);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--accent-strong);
+  }
+
+  .doc-sources {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .doc-sources a {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .doc-sources a:hover { text-decoration: underline; color: var(--accent-strong); }
+
   /* ---------- footer ---------- */
   footer {
     margin-top: 3.5rem;
@@ -344,10 +508,15 @@
     }
     .row-period { padding-top: 0; }
     .pill { justify-self: start; }
+    .doc { padding: 1.4rem 1.1rem; max-height: 560px; }
+    .doc table { font-size: 0.8rem; }
+    .doc th, .doc td { padding: 0.45rem 0.55rem; }
+    .top-tabs { justify-content: flex-start; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
+    html { scroll-behavior: auto; }
   }
 </style>
 
@@ -356,6 +525,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <div class="page">
+
+  <nav class="top-tabs">
+    <a class="top-tab" href="#event-plan">📄 이벤트 기획서</a>
+  </nav>
 
   <header class="hero">
     <span class="eyebrow">DEV PROFILE · BUILD 2026.09</span>
@@ -505,6 +678,124 @@
         </div>
       </article>
 
+    </div>
+  </section>
+
+  <section class="section" id="event-plan" aria-labelledby="event-title">
+    <h2 class="section-title" id="event-title"><span class="section-tag">PLAN</span>이벤트 기획서</h2>
+
+    <div class="doc">
+      <div class="doc-head">
+        <h3 class="doc-title">로스트아크 이벤트 기획서 — 아르케시아 픽셀 모자이크</h3>
+        <p class="doc-subtitle">트렌드 코리아 2026 '픽셀라이프' 반영 기획안</p>
+        <div class="doc-meta">2026-09-17</div>
+      </div>
+
+      <h4>1. 기획 개요</h4>
+      <p>
+        <strong>이벤트명(안):</strong> 아르케시아 픽셀 모자이크<br>
+        <strong>장르/형식:</strong> 개인 픽셀 캔버스 + 서버 공동 벽화 이중 구조 이벤트<br>
+        <strong>목적:</strong> 캐릭터별 하루 1회 활동을 '개인의 그림'과 '서버 전체의 그림' 두 층위에 동시에 쌓아, 기존 출석·스탬프·코인교환형 이벤트와는 분명히 다른 협력·개인화 경험을 제공한다.
+      </p>
+      <p><strong>배경:</strong> 로스트아크는 카제로스 대륙 이후 신규 레이드 간 텀이 길어질수록 라이트 유저의 이탈률이 높아지는 경향을 보여왔다. 동시에 출석 이벤트, 스탬프판, 코인 교환형 이벤트가 반복되면서 '또 그 이벤트'라는 피로감도 누적되고 있다. 따라서 이번 기획은 접속 유인은 유지하되, 기존에 없던 새로운 상호작용 구조를 도입하는 것을 전제로 한다.</p>
+      <p>2026년 소비 트렌드는 이러한 방향을 뒷받침한다. 『트렌드 코리아 2026』의 10대 키워드 중 하나인 '픽셀라이프(Pixelated Life)'는 큰 성공보다 작고 빠른 성취를 촘촘히 쌓아가는 소비·행동 양식을 가리킨다. 본 기획은 이 키워드를 문자 그대로 '픽셀(점)'로 시각화해, 개인의 작은 행동 하나하나가 실제로 화면 위의 점 하나(픽셀)가 되어 쌓이는 신규 시스템으로 구현한다. 스탬프나 코인을 상점에서 아이템으로 맞바꾸는 방식이 아니라, 행동 자체가 '그림'이라는 눈에 보이는 결과물로 축적된다는 점이 이번 기획의 핵심 차별점이다.</p>
+      <p class="doc-callout">"오늘의 한 조각이, 우리의 그림이 된다."</p>
+
+      <h4>2. 트렌드 분석 — 픽셀라이프(Pixelated Life)</h4>
+      <p>김난도 서울대 소비트렌드분석센터의 『트렌드 코리아 2026』은 2026년 소비를 관통하는 10대 키워드를 앞글자를 딴 'HORSE POWER'로 제시했다. 그중 <strong>픽셀라이프</strong>는 큰 목표를 한 번에 이루기보다, 작고(pixel 단위) 빨리 반복되는 성취를 촘촘히 쌓아 안정감과 만족감을 얻는 소비·행동 패턴을 지칭한다. 불확실성이 높은 시대에 거대한 성공 대신 통제 가능한 단위의 성취를 반복해서 쌓으며 심리적 안정감을 찾는 욕구가 핵심 동기다.</p>
+      <p><strong>게임 산업 적용 근거:</strong></p>
+      <ol>
+        <li>이미 모바일 캐주얼 게임(회귀형 RPG, 방치형 게임)이 이 패턴으로 높은 재방문율을 입증해왔다.</li>
+        <li>MMORPG 유저층은 고연령·직장인이 늘면서 하루 합계 플레이 시간이 짧아졌으나, 접속 빈도는 유지하려는 성향이 강하다.</li>
+        <li>로스트아크의 '모코코 씨앗' 수집은 '작은 조각을 모은다'는 픽셀라이프적 정서를 이미 지닌 자산이지만, 수집 즉시 체크리스트로 소모되는 일회성 경험에 가깝다. 이번 이벤트는 그 정서만 계승하고, 조각이 실제 '그림'으로 축적·시각화되는 새로운 인터랙션을 설계해 기존 콘텐츠와 뚜렷이 구분한다.</li>
+      </ol>
+      <p>즉, 본 이벤트는 기존 출석·스탬프·코인교환·팀 대항 이벤트의 문법을 그대로 따르지 않는다. '개인의 작은 성취 하나하나가 모여 하나의 큰 그림이 된다'는 픽셀라이프의 핵심 은유를 개인 캔버스와 서버 공동 벽화라는 이중 구조로 직접 구현해, 로스트아크에 없던 새로운 이벤트 문법을 제시한다.</p>
+
+      <h4>3. 이벤트 컨셉 및 핵심 내용</h4>
+
+      <h5>3-1. 조각 획득 구조 — '하루 딱 1개'</h5>
+      <p>새로운 섬이나 맵을 만들지 않는다. 카오스던전·가디언토벌·필드보스·채집·요리·낚시·친구와의 파티 등 이미 존재하는 콘텐츠 중 하나를 캐릭터가 하루 첫 번째로 완료하면 '빛의 조각' 1개를 지급한다. 하루에 딱 1개만 지급되므로 반복 파밍이 무의미해지고, 어떤 콘텐츠를 하든 하루 한 번의 플레이가 곧 보상으로 이어진다 — 기존 출석형 이벤트가 '접속'만으로 조건을 충족시키던 것과 가장 큰 차이점이다.</p>
+
+      <h5>3-2. 개인 레이어 — 나의 픽셀 캔버스</h5>
+      <p>획득한 조각은 캐릭터별 개인 창에 있는 30칸(5×6) 캔버스의 빈 칸 하나를 점등한다. 30일간 매일 채워가면 시즌 테마(루페온, 모코코 왕, 시즌 보스 실루엣 중 선택)의 숨겨진 도트 그림이 점점 드러난다. 이때 플레이한 콘텐츠 유형(전투·생활·사교)에 따라 픽셀 색상이 달라져, 같은 그림이라도 플레이어마다 다른 색조의 '나만의 그림'이 완성된다. 7·14·21칸 달성 시 중간 보상을, 30칸 완성 시 캔버스가 실제 영지·스트롱홀드에 설치 가능한 '픽셀 액자' 장식품으로 전환된다 — 상점 교환품이 아닌, 플레이어가 직접 '만들어낸' 결과물이라는 점이 핵심이다.</p>
+
+      <h5>3-3. 서버 레이어 — 아르케시아 대형 벽화</h5>
+      <p>모든 플레이어의 조각은 개인 캔버스와 별개로 서버(또는 권역) 단위의 거대한 벽화에도 1개씩 합산된다. 인게임에서 실시간 진행률(%)을 확인할 수 있으며, 25%·50%·75%·100% 달성 시 전서버 플레이어 전원에게 귀속골드·영웅 젬 선택권 등 확정 보상이 지급된다. 승패나 랭킹 경쟁이 없는 순수 협력형 목표로, 참여 자체가 기여가 되는 구조다.</p>
+
+      <h5>3-4. 기존 이벤트와의 차별점</h5>
+      <table>
+        <tr><th>구분</th><th>기존 방식(예시)</th><th>아르케시아 픽셀 모자이크</th></tr>
+        <tr><td>출석/스탬프형</td><td>접속만 하면 자동 적립, 콘텐츠 플레이와 무관</td><td>지정된 콘텐츠를 실제로 1회 이상 플레이해야 적립</td></tr>
+        <tr><td>섬 기반 미니게임(하트비트섬 등)</td><td>별도 섬·시간대 이동이 필수</td><td>기존 콘텐츠만으로 참여, 별도 이동 불필요</td></tr>
+        <tr><td>코인 교환형</td><td>모은 코인을 상점에서 아이템으로 교환</td><td>결과물이 '내가 만든 그림'이라는 개인화된 산출물</td></tr>
+        <tr><td>팀 대항(눈싸움 등)</td><td>승패·랭킹 기반 경쟁</td><td>승패 없는 서버 공동 목표, 참여 = 기여</td></tr>
+      </table>
+
+      <h4>4. 보상 체계</h4>
+      <p>설계 원칙: 큰 단발성 보상보다 '꾸준히 참여하면 확실히 받는다'는 체감을 우선한다. 문턱은 낮게, 획득 횟수(칸 수)를 높게 설계해 중도 이탈 없이 꾸준히 참여하도록 유도한다.</p>
+
+      <h5>개인 캔버스 마일스톤</h5>
+      <table>
+        <tr><th>달성 칸 수</th><th>보상</th></tr>
+        <tr><td>7칸</td><td>돌파석 선택 상자 × 30, 배틀 아이템 교환권 × 10</td></tr>
+        <tr><td>14칸</td><td>파괴석 선택 상자 × 20, 수호석 선택 상자 × 100</td></tr>
+        <tr><td>21칸</td><td>픽셀 테마 전용 이동 효과</td></tr>
+        <tr><td>30칸(완성)</td><td>픽셀 액자 장식품(영지·스트롱홀드 설치용), 칭호효과 보관함</td></tr>
+      </table>
+
+      <h5>서버 공동 벽화 달성보상 (전원 지급, 확정 보상)</h5>
+      <table>
+        <tr><th>진행률</th><th>보상</th></tr>
+        <tr><td>25%</td><td>귀속골드 20,000골드</td></tr>
+        <tr><td>50%</td><td>영웅 젬 선택권 3개</td></tr>
+        <tr><td>75%</td><td>귀속골드 30,000골드 + 영웅 젬 선택권 5개</td></tr>
+        <tr><td>100%</td><td>전원 기념 칭호(아르케시아 벽화 완성본) + 캐릭터용 파이널 상자</td></tr>
+      </table>
+      <p>미달성 시에도 해당 시점까지의 누적 진행률은 유지되며, 이벤트 종료 1주일 전부터는 '라스트 스퍼트' 구간으로 전환해 미참여자의 회귀를 유도한다.</p>
+
+      <h4>5. 진행 일정 및 참여 조건</h4>
+      <p>
+        <strong>기간:</strong> 30일간 (예: 10월 첫째 주 – 10월 마지막 주, 가을 시즌 테마로 진행)<br>
+        <strong>대상:</strong> 전투력 기준 1이상 모든 캐릭터 (저사양 캐릭터도 채집·요리·낚시 등 생활 콘텐츠로 참여 가능)<br>
+        <strong>참여 방법:</strong> 별도 사전 신청 없이, 이벤트 기간 중 지정 콘텐츠를 1회 이상 완료하면 자동 참여
+      </p>
+
+      <h5>주차별 타임라인</h5>
+      <table>
+        <tr><th>주차</th><th>내용</th></tr>
+        <tr><td>1주차</td><td>오픈 · 개인 캔버스 테마 선택 오픈, 7칸 마일스톤 안내</td></tr>
+        <tr><td>2주차</td><td>서버 벽화 25% 돌파 예상 구간, 커뮤니티 진행률 공유 이벤트 병행</td></tr>
+        <tr><td>3주차</td><td>50·75% 돌파 집중 구간, 전원 확정 보상 지급 안내</td></tr>
+        <tr><td>4주차</td><td>30칸 완성자 속출, 100% 돌파 시 전서버 칭호 이벤트</td></tr>
+        <tr><td>종료 후 1주</td><td>라스트 스퍼트 구간 (미참여자 회귀 유도)</td></tr>
+      </table>
+      <p>진행률은 게임 내 UI와 공식 웹 대시보드에서 실시간으로 공개해, 액자가 채워지는 과정 자체를 커뮤니티 콘텐츠로 유도한다.</p>
+
+      <h4>6. 기대 효과</h4>
+      <ul>
+        <li><strong>DAU/접속 빈도 증가:</strong> '하루 한 번이라도 빠짐없이'라는 진입 장벽이 낮아, 단기 접속자의 일일 접속률이 상승할 것으로 예상된다.</li>
+        <li><strong>복귀 유저 유입:</strong> 별도 레이드 실력이 필요 없는 생활 콘텐츠로도 참여 조건을 충족할 수 있어, 로우 유저·복귀 유저의 진입 장벽을 낮춘다.</li>
+        <li><strong>커뮤니티 화제성:</strong> 개인 픽셀 아트는 SNS·커뮤니티에 공유하기 좋은 시각적 결과물이며, 서버 공동 벽화의 진행률 공개는 '우리 서버도 달성하자'식의 자발적 홍보 효과를 기대할 수 있다.</li>
+        <li><strong>보상 인플레이션 부담 적음:</strong> 적립 상한이 하루 1개로 고정되어 계정 보유량이 급격히 늘어나지 않아 경제 부담이 적다.</li>
+        <li><strong>개발 리소스 효율:</strong> 새 맵·섬·NPC 제작 없이 UI·진행률 시스템 중심으로 설계되어, 상대적으로 짧은 개발 기간으로도 구현이 가능하다.</li>
+      </ul>
+
+      <h4>7. 리스크 및 고려사항</h4>
+      <ul>
+        <li><strong>서버 목표 미달성 리스크:</strong> 참여율이 낮으면 100% 돌파가 어려워져 보상에 소외되는 유저가 많아질 수 있다. 대응: 진행률 계산 시 서버 활성 유저 수 대비 필요 조각 수를 보수적으로 설계하고, 종료 1주일 전 진행률 경과를 보면서 목표치 미달 시 자동 하향 조정하는 안전장치를 둔다.</li>
+        <li><strong>어뷰징 가능성:</strong> '가장 쉽거나 빠른 콘텐츠만 반복'하는 부정 플레이 발생 여지가 있다. 대응: 하루 1회 적립 상한을 유지하고, 캐릭터당 적립으로 설계해 부캐릭터 대량 생성을 통한 조각 버는 행위의 이득을 낮추며, 필요 시 계정당 일일 획득 상한을 병행 검토한다.</li>
+        <li><strong>타 이벤트와의 중복:</strong> 동일 기간에 출석형 이벤트가 겹치면 구조가 비슷해 보일 수 있다. 대응: 이번 분기에는 별도 출석 보상을 병행하지 않으며, 공지사항에서 '픽셀 모자이크는 출석 체크가 아니라 실제 플레이 기반'임을 명시해 혼동을 방지한다.</li>
+        <li><strong>서버간 형평성:</strong> 저트래픽/고트래픽 서버의 인구 차이로 벽화 돌파 속도가 다를 수 있다. 대응: 서버별 목표치를 절대치가 아닌 서버 평균 참여율 기준 %로 설정해 형평성을 확보한다.</li>
+        <li><strong>보상 인플레이션:</strong> 서버 보상이 골드 경제에 영향을 줄 수 있다. 대응: 거래소·경매장에 유통되지 않는 귀속골드로 지급해 경제 파급력을 차단하고, 전체 지급량을 사전 상한 설계해 인플레이션 영향을 최소화한다.</li>
+      </ul>
+
+      <h4>Sources</h4>
+      <ul class="doc-sources">
+        <li><a href="https://www.ntoday.co.kr/news/articleView.html?idxno=119826" target="_blank" rel="noopener noreferrer">트렌드 코리아 2026, 말의 해 기념해 공개한 10대 키워드 'HORSE POWER' (투데이신문)</a></li>
+        <li><a href="https://brunch.co.kr/@21c17027d5aa456/33" target="_blank" rel="noopener noreferrer">트렌드 코리아 2026 요약: 핵심 키워드 한눈에 보기 (brunch)</a></li>
+        <li><a href="https://lostark.game.onstove.com/News/Event/Now" target="_blank" rel="noopener noreferrer">로스트아크 진행중 이벤트 (공식 홈페이지)</a></li>
+        <li><a href="https://namu.wiki/w/%EB%A1%9C%EC%8A%A4%ED%8A%B8%EC%95%84%ED%81%AC/%EC%9D%B4%EB%B2%A4%ED%8A%B8" target="_blank" rel="noopener noreferrer">로스트아크/이벤트 (나무위키)</a></li>
+      </ul>
     </div>
   </section>
 
